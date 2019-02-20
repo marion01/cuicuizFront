@@ -12,15 +12,14 @@ public class QuestionClient extends WebServiceGatewaySupport {
 	public GetQuestionResponse getQuestion(Integer id) {
 
 		final GetQuestionRequest request = new GetQuestionRequest();
-		request.setId(id);
+		request.setThemeId(id);
+		request.setNbQuestions(5);
 
 		log.info("Requesting location for " + id);
 
-		final GetQuestionResponse response = (GetQuestionResponse) getWebServiceTemplate().marshalSendAndReceive(
+		return (GetQuestionResponse) getWebServiceTemplate().marshalSendAndReceive(
 				"http://localhost:8080/ws/questions", request,
 				new SoapActionCallback("http://spring.io/guides/gs-producing-web-service/GetQuestionRequest"));
-
-		return response;
 	}
 
 }

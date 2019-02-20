@@ -5,9 +5,9 @@ import java.lang.reflect.Method;
 
 public enum ModeEnum{
 	
-	Speed(0, "Speed", Speed.class),
-	Normal(1, "Normal", Normal.class),
-	Duel(2, "Duel", Duel.class);
+	SPEED(0, "Speed", Speed.class),
+	NORMAL(1, "Normal", Normal.class),
+	DUEL(2, "Duel", Duel.class);
 	
 	private String name;
 	private int id;
@@ -43,7 +43,7 @@ public enum ModeEnum{
 		return name;
 	}
 	
-	public IMode getInstance() throws ClassNotFoundException, NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+	public IMode getInstance() throws ClassNotFoundException, NoSuchMethodException, IllegalAccessException, InvocationTargetException {
 		Class<?> c = Class.forName(clazz.getName());
 		Method method = c.getDeclaredMethod("getInstance");
 		return (IMode) method.invoke(c);

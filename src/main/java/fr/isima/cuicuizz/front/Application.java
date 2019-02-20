@@ -19,7 +19,6 @@ public class Application {
 		try {
 			Main.launch();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -27,13 +26,7 @@ public class Application {
 	@Bean
 	CommandLineRunner lookup(QuestionClient quoteClient) {
 		return args -> {
-			String country = "Spain";
-
-			if (args.length > 0) {
-				country = args[0];
-			}
-			final GetQuestionResponse response = quoteClient.getQuestion(3);
-			System.err.println(response.getQuestion().getValue());
+			//final GetQuestionResponse response = quoteClient.getQuestion(1);
 		};
 	}
 
