@@ -9,10 +9,11 @@ public class QuestionClient extends WebServiceGatewaySupport {
 
 	private static final Logger log = LoggerFactory.getLogger(QuestionClient.class);
 
-	public GetQuestionResponse getQuestion(Integer id) {
+	public GetQuestionResponse getQuestion(Integer id, Integer nbQuestions) {
 
 		final GetQuestionRequest request = new GetQuestionRequest();
-		request.setId(id);
+		request.setThemeId(id);
+		request.setNbQuestions(nbQuestions);
 
 		log.info("Requesting location for " + id);
 

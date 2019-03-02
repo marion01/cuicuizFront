@@ -9,19 +9,21 @@ import org.springframework.context.annotation.Bean;
 public class Application {
 
 	public static void main(String[] args) {
+		System.setProperty("spring.devtools.restart.enabled", "false");
 		SpringApplication.run(Application.class, args);
 	}
 
 	@Bean
 	CommandLineRunner lookup(QuestionClient quoteClient) {
 		return args -> {
-			String country = "Spain";
 
-			if (args.length > 0) {
-				country = args[0];
+			final GetQuestionResponse response = quoteClient.getQuestion(1, 3);
+			for (final Question question : response.getQuestions()) {
+				System.err.println(question.getValue());
+				for (final Answer answer : question.getAnswers()) {
+					System.err.println(answer.getAnswer());
+				}
 			}
-			final GetQuestionResponse response = quoteClient.getQuestion(3);
-			System.err.println(response.getQuestion().getValue());
 		};
 	}
 
