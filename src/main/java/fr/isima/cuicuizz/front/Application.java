@@ -1,5 +1,7 @@
 package fr.isima.cuicuizz.front;
 
+import java.io.IOException;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -9,8 +11,16 @@ import org.springframework.context.annotation.Bean;
 public class Application {
 
 	public static void main(String[] args) {
+		// disable auto restart
 		System.setProperty("spring.devtools.restart.enabled", "false");
+
 		SpringApplication.run(Application.class, args);
+
+		try {
+			Main.launch();
+		} catch (final IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Bean
@@ -24,6 +34,8 @@ public class Application {
 					System.err.println(answer.getAnswer());
 				}
 			}
+
+			// final GetQuestionResponse response = quoteClient.getQuestion(1);
 		};
 	}
 
