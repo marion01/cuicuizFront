@@ -4,6 +4,7 @@ public class User {
 	private static User instance;
 	
 	private String pseudo;
+	private String pseudoSecondPlayer;
 	
 	public static User getInstance() {
 		if (instance == null) {
@@ -18,5 +19,12 @@ public class User {
 
 	public void setPseudo(String pPseudo) {
 		pseudo = pPseudo;
+	}
+	public String getPseudoSecondPlayer() {
+		return pseudoSecondPlayer;
+	}
+
+	public void setPseudoSecondPlayer(String pPpseudoSecondPlayer) {
+		pseudoSecondPlayer = pPpseudoSecondPlayer;
 	}
 }

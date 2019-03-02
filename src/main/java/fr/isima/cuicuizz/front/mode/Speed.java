@@ -13,13 +13,9 @@ public class Speed implements IMode{
 	@Override
 	public void execute(List<Question> questions) {
 		System.out.println("Speed mode");	
-		int nbTrue = 0;
 		try {
 			long start = System.currentTimeMillis();
-			for (Question q: questions) {
-				boolean result = Main.displayQuestion(q);
-				if (result) nbTrue++;
-			}
+			int nbTrue = Main.answerQuestions(questions);
 			long end = System.currentTimeMillis();
 			double time = (end - start)/1000;
 			System.out.println(time + "s");

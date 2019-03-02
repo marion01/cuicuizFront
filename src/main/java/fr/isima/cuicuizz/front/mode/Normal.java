@@ -9,16 +9,15 @@ import fr.isima.cuicuizz.front.Question;
 public class Normal implements IMode {
 	
 	private static Normal instance;
+	
+	private List<Question> questions;
 
 	@Override
-	public void execute(List<Question> questions) {
+	public void execute(List<Question> pQuestions) {
+		questions = pQuestions;
 		System.out.println("Normal mode");
-		int nbTrue = 0;
 		try {
-			for (Question q: questions) {
-				boolean result = Main.displayQuestion(q);
-				if (result) nbTrue++;
-			}
+			int nbTrue = Main.answerQuestions(questions);
 			System.out.println("You have "+ nbTrue + " valid response");
 			Main.visualizeCorrectResponse(questions);
 			Main.menu();

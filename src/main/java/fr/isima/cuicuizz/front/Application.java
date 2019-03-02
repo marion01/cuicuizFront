@@ -22,11 +22,14 @@ public class Application {
 			e.printStackTrace();
 		}
 	}
+	
+	public static QuestionClient questionClient; 
 
 	@Bean
 	CommandLineRunner lookup(QuestionClient quoteClient) {
 		return args -> {
-
+			
+			questionClient = quoteClient;
 			final GetQuestionResponse response = quoteClient.getQuestion(1, 3);
 			for (final Question question : response.getQuestions()) {
 				System.err.println(question.getValue());
